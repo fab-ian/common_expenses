@@ -2,10 +2,7 @@ source 'https://rubygems.org'
 
 gem 'haml-rails', '~> 0.9'
 
-source 'https://rails-assets.org' do
-  gem 'rails-assets-bootstrap'
-end
-
+gem 'twitter-bootstrap-rails'
 gem 'devise'
 gem 'omniauth-facebook'
 gem 'config'
