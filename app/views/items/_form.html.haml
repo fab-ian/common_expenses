@@ -1,0 +1,6 @@
+%h1 Add new Item
+
+= simple_form_for item do |f|
+  = f.input :name
+  = f.input :description, as: :text
+  = f.button :submit

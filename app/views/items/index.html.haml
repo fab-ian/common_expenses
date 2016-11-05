@@ -1,0 +1,9 @@
+%h1 Items
+
+= link_to 'Add', new_item_path, class: 'btn btn-success'
+
+- items.each do |i|
+  %p
+    = i.name
+    = link_to 'Show', item_path(i)
+    = link_to 'Delete', item_path(i), method: :delete
