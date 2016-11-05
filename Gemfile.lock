@@ -57,6 +57,8 @@ GEM
       activesupport (>= 3.0)
       deep_merge (~> 1.1.1)
     debug_inspector (0.0.2)
+    decent_exposure (3.0.0)
+      activesupport (>= 4.0)
     deep_merge (1.1.1)
     devise (4.1.1)
       bcrypt (~> 3.0)
@@ -243,6 +245,7 @@ PLATFORMS
 DEPENDENCIES
   coffee-rails (~> 4.2)
   config
+  decent_exposure
   devise
   haml-rails (~> 0.9)
   jbuilder (~> 2.5)
