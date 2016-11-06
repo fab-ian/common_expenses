@@ -2,6 +2,7 @@ class User < ApplicationRecord
   has_many :item_users
   has_many :expense_users
   has_many :payments
+  has_many :users
 
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
