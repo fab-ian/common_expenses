@@ -1,6 +1,8 @@
 class ItemsController < ApplicationController
   expose :items, -> { Item.all }
   expose :item
+  expose :item_user, -> { ItemUser.new }
+  expose :item_users, -> { ItemUser.includes(:user).where(item_id: params[:id]) }
 
   def create
     if item.save

@@ -1,0 +1,3 @@
+$(".participants").append("#{ j render 'item_users/record', iu: item_user }");
+var select_value = $("#item_user_user_id").val();
+$("#item_user_user_id option[value='"+ select_value + "']").remove();

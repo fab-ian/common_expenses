@@ -10,6 +10,8 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable,
          :omniauthable, omniauth_providers: [:facebook]
 
+  scope :available_users, -> (item_id){ User.where.not(id: ItemUser.where(item_id: item_id).pluck(:user_id)) }
+
   def self.from_omniauth(auth)
     where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
       user.email = auth.info.email || "#{SecureRandom.hex(15)}@common_expenses.com"
@@ -18,5 +20,9 @@ class User < ApplicationRecord
       user.link = auth.info.urls.Facebook
       user.image = auth.info.image
     end
+  end
+
+  def self.select_field(item_id)
+    available_users(item_id).map { |u| [u.name, u.id] }
   end
 end

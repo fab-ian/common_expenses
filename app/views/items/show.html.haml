@@ -2,3 +2,14 @@
 %p= item.name
 %p= item.description
 %p= link_to 'Edit', edit_item_path(item), class: 'btn btn-success'
+
+%h1 Add Users to Item
+= simple_form_for item_user, remote: true do |f|
+  = f.input :item_id, as: :hidden, input_html: { value: item.id }
+  = f.select :user_id, User.select_field(item.id)
+  = f.button :submit
+
+%hr
+%div.participants
+  - item_users.each do |iu|
+    = render 'item_users/record', iu: iu
