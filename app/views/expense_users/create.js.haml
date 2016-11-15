@@ -1,0 +1,4 @@
+$("#participants_#{expense_user.expense_id}").append("#{ j render 'partials/user_record', u: expense_user, user_controller: 'expense_users' }");
+
+var select_value = $("#select_box_#{expense_user.expense_id} select#expense_user_user_id").val();
+$("#select_box_#{expense_user.expense_id} select#expense_user_user_id option[value='"+ select_value + "']").remove();

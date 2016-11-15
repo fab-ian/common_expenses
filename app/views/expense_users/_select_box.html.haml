@@ -1,0 +1,6 @@
+%div{id: "select_box_#{div_id}"}
+  %p Add Users to Expense
+  = simple_form_for user_rec, remote: true do |f|
+    = f.input :expense_id, as: :hidden, input_html: { value: div_id }
+    = f.select :user_id, User.select_field_expense(div_id)
+    = f.button :submit
