@@ -7,6 +7,8 @@ AllCops:
     - 'bin/spring'
     - 'config/initializers/simple_form_bootstrap.rb'
     - 'config/initializers/simple_form.rb'
+    - 'db/migrate/*'
+    - 'config/initializers/devise.rb'
   UseCache: false
 Style/CollectionMethods:
   Description: Preferred collection methods.
