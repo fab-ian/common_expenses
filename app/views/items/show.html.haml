@@ -3,13 +3,21 @@
 %p= item.description
 %p= link_to 'Edit', edit_item_path(item), class: 'btn btn-success'
 
-%h1 Add Users to Item
-= simple_form_for item_user, remote: true do |f|
-  = f.input :item_id, as: :hidden, input_html: { value: item.id }
-  = f.select :user_id, User.select_field(item.id)
-  = f.button :submit
+= render 'item_users/select_box', user_rec: item_user
 
 %hr
-%div.participants
-  - item_users.each do |iu|
-    = render 'item_users/record', iu: iu
+= render 'partials/user_records', users_rec: item_users, user_controller: 'item_users', div_id: ''
+
+%hr
+= render 'expenses/form'
+
+%hr
+- expenses.each do |e|
+  .row
+    .col-md-6
+      %p 
+        %strong #{e.name} - #{e.amount}
+    .col-md-6
+      = render 'expense_users/select_box', user_rec: expense_user, div_id: e.id
+      = render 'partials/user_records', users_rec: ExpenseUser.get_participants(e.id), user_controller: 'expense_users', div_id: e.id      
+  %hr

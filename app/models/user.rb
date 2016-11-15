@@ -10,7 +10,13 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable,
          :omniauthable, omniauth_providers: [:facebook]
 
-  scope :available_users, -> (item_id){ User.where.not(id: ItemUser.where(item_id: item_id).pluck(:user_id)) }
+  scope :available_users_item, (lambda do |item_id|
+    User.where.not(id: ItemUser.where(item_id: item_id).pluck(:user_id))
+  end)
+
+  scope :available_users_expense, (lambda do |expense_id|
+    User.where.not(id: ExpenseUser.where(expense_id: expense_id).pluck(:user_id))
+  end)
 
   def self.from_omniauth(auth)
     where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
@@ -22,7 +28,11 @@ class User < ApplicationRecord
     end
   end
 
-  def self.select_field(item_id)
-    available_users(item_id).map { |u| [u.name, u.id] }
+  def self.select_field_item(item_id)
+    available_users_item(item_id).map { |u| [u.name, u.id] }
+  end
+
+  def self.select_field_expense(expense_id)
+    available_users_expense(expense_id).map { |u| [u.name, u.id] }
   end
 end
