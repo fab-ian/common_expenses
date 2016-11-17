@@ -6,6 +6,11 @@ Rails.application.routes.draw do
   resources :expense_users, only: [:create, :destroy]
   resources :payments, only: [:create, :destroy]
 
+  get(
+    'calculators/calculate_amounts/:item_id' => 'calculators#calculate_amounts',
+    as: 'calculate'
+  )
+
   get 'home/index'
   root 'items#index'
 end

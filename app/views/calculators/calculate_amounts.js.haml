@@ -1,0 +1,3 @@
+$("#calculated_amounts").empty()
+- @calculated_result.each do |cs|
+  $("#calculated_amounts").append("<p>#{cs['name']} :: #{number_to_currency(cs['amount'] )}</p>")
