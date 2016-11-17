@@ -28,5 +28,5 @@ test:
 
 production:
   <<: *default
-  host: pgsql3.mydevil.net
+  host: __HOST__
   database: __DATABASE_NAME__
