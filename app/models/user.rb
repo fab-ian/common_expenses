@@ -14,6 +14,10 @@ class User < ApplicationRecord
     User.where.not(id: ItemUser.where(item_id: item_id).pluck(:user_id))
   end)
 
+  scope :used_users_item, (lambda do |item_id|
+    User.where(id: ItemUser.where(item_id: item_id).pluck(:user_id))
+  end)
+
   scope :available_users_expense, (lambda do |expense_id|
     User.where.not(id: ExpenseUser.where(expense_id: expense_id).pluck(:user_id))
   end)

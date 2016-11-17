@@ -1,0 +1,13 @@
+= simple_form_for Payment.new, remote: true do |f|
+  = f.input :item_id, as: :hidden, input_html: {value: item_id}
+  = f.input :name
+  = f.input :description, as: :text
+  = f.input :amount
+  = f.association :user, collection: User.used_users_item(item_id), prompt: "Choose an User"
+  = f.button :submit
+
+%div{id: 'payments'}
+  %table.table
+    - payments.each do |p|
+      = render 'payments/record', p: p
+%div{id: 'payments_errors'}

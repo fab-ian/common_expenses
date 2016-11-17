@@ -21,3 +21,5 @@
       = render 'expense_users/select_box', user_rec: expense_user, expense_id: e.id
       = render 'partials/user_records', users_rec: ExpenseUser.get_participants(e.id), user_controller: 'expense_users', expense_id: e.id      
   %hr
+
+= render 'payments/form', item_id: item.id
