@@ -4,9 +4,11 @@ class ExpensesController < ApplicationController
 
   def create
     ActiveRecord::Base.transaction do
+      users_ids = item_users.pluck(:user_id)
+
+      expense.number_of_participants = users_ids.count
       expense.save
 
-      users_ids = item_users.pluck(:user_id)
       insert_sql = ExpenseUser.inserts(users_ids, expense)
 
       sql = "INSERT INTO expense_users (\"expense_id\", \"user_id\", \"created_at\", \"updated_at\")
