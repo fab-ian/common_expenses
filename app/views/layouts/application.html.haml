@@ -47,9 +47,10 @@
           .well.sidebar-nav
             %h3 Settlement
             %ul.nav.nav-list
-              - unless item.id.nil?
-                %li
-                  %div{id: 'calculated_amounts'}
-                  = link_to "Calculate", calculate_path(item.id), remote:true, class: 'btn btn-default'
+              -if defined?(item).present?
+                - unless item.id.nil?
+                  %li
+                    %div{id: 'calculated_amounts'}
+                    = link_to "Calculate", calculate_path(item.id), remote:true, class: 'btn btn-default'
       %footer
         %p &copy; Naibaf 2016
