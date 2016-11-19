@@ -1,1 +1,1 @@
-OmniAuth.config.full_host = 'http://localhost:3000'
+# OmniAuth.config.full_host = 'http://localhost:3000'
