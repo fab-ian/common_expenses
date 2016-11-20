@@ -62,7 +62,7 @@ group :development do
   gem 'capistrano-bundler', '~> 1.2'
   gem 'capistrano-passenger'
   gem 'capistrano-rvm'
-  gem 'capistrano-sidekiq'
+  gem 'capistrano-sidekiq', git: 'https://github.com/seuros/capistrano-sidekiq.git'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
