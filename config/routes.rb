@@ -11,6 +11,11 @@ Rails.application.routes.draw do
     as: 'calculate'
   )
 
+  # authenticate :user, lambda { |u| u.admin? } do
+  authenticate :user do
+    mount Sidekiq::Web => '/sidekiq'
+  end
+
   get 'home/index'
   root 'items#index'
 end

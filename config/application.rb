@@ -27,5 +27,7 @@ module CommonExpenses
       generate.stylesheets = false
       generate.javascripts = false
     end
+
+    config.active_job.queue_adapter = :sidekiq
   end
 end
