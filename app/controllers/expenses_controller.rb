@@ -1,6 +1,7 @@
 class ExpensesController < ApplicationController
   expose :expense
   expose :item_users, -> { ItemUser.get_participants(expense_params[:item_id]) }
+  expose :item_id, -> { params[:item_id] }
 
   def create
     ActiveRecord::Base.transaction do
@@ -16,11 +17,14 @@ class ExpensesController < ApplicationController
 
       ActiveRecord::Base.connection.execute sql
     end
-
-    redirect_to item_path(expense_params[:item_id])
   end
 
   def destroy
+    expense.destroy
+  end
+
+  def update
+    expense.update(expense_params)
   end
 
   private

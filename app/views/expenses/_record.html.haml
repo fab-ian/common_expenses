@@ -1,0 +1,12 @@
+.row{id: "expense_#{e.id}"}
+  .col-md-6
+    %p 
+      %strong #{e.name} - #{e.amount} 
+      = link_to '(edit)', edit_item_expense_path(e.item_id, e.id), remote: true
+      = link_to '(remove)', expense_path(e.id), method: :delete, remote: true
+    %div{id: "expense_edit_#{e.id}"}
+
+  .col-md-6
+    = render 'expense_users/select_box', expense_id: e.id
+    = render 'partials/user_records', users_rec: ExpenseUser.get_participants(e.id), user_controller: 'expense_users', expense_id: e.id
+%hr

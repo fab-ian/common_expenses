@@ -9,17 +9,11 @@
 = render 'partials/user_records', users_rec: item_users, user_controller: 'item_users', expense_id: ''
 
 %hr
-= render 'expenses/form'
+= render 'expenses/new'
 
 %hr
-- expenses.each do |e|
-  .row
-    .col-md-6
-      %p 
-        %strong #{e.name} - #{e.amount}
-    .col-md-6
-      = render 'expense_users/select_box', user_rec: expense_user, expense_id: e.id
-      = render 'partials/user_records', users_rec: ExpenseUser.get_participants(e.id), user_controller: 'expense_users', expense_id: e.id      
-  %hr
+%div{id: 'expenses'}
+  - expenses.each do |e|
+    = render 'expenses/record', e: e
 
 = render 'payments/form', item_id: item.id

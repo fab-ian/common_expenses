@@ -5,7 +5,6 @@ class ItemsController < ApplicationController
   expose :item_users, -> { ItemUser.get_participants(params[:id]) }
   expose :expense
   expose :expenses, -> { Expense.where(item_id: params[:id]) }
-  expose :expense_user, -> { ExpenseUser.new }
   expose :payments, -> { Payment.includes(:user).where(item_id: params[:id]) }
 
   def create
