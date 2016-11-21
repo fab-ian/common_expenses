@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 
-gem 'haml-rails', '~> 0.9'
-
+# gem 'haml-rails', '~> 0.9'
+gem 'hamlit'
 gem 'twitter-bootstrap-rails'
 gem 'devise'
 gem 'omniauth-facebook'
@@ -11,6 +11,7 @@ gem 'simple_form'
 gem 'draper', '~> 3.0.0.pre1'
 gem 'pg'
 gem 'sidekiq'
+gem 'highline'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.0.0', '>= 5.0.0.1'
