@@ -1,3 +1,5 @@
+require File.expand_path('../development_production', __FILE__)
+
 Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
 
