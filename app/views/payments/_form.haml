@@ -1,3 +1,4 @@
+%h3 Payments
 = simple_form_for Payment.new, remote: true do |f|
   = f.input :item_id, as: :hidden, input_html: {value: item_id}
   = f.input :name
