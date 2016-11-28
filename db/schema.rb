@@ -10,15 +10,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161106140615) do
+ActiveRecord::Schema.define(version: 20161128175652) do
+
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
 
   create_table "expense_users", force: :cascade do |t|
     t.integer  "expense_id"
     t.integer  "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["expense_id"], name: "index_expense_users_on_expense_id"
-    t.index ["user_id"], name: "index_expense_users_on_user_id"
+    t.index ["expense_id"], name: "index_expense_users_on_expense_id", using: :btree
+    t.index ["user_id"], name: "index_expense_users_on_user_id", using: :btree
   end
 
   create_table "expenses", force: :cascade do |t|
@@ -28,7 +31,7 @@ ActiveRecord::Schema.define(version: 20161106140615) do
     t.integer  "number_of_participants"
     t.datetime "created_at",             null: false
     t.datetime "updated_at",             null: false
-    t.index ["item_id"], name: "index_expenses_on_item_id"
+    t.index ["item_id"], name: "index_expenses_on_item_id", using: :btree
   end
 
   create_table "item_users", force: :cascade do |t|
@@ -36,8 +39,8 @@ ActiveRecord::Schema.define(version: 20161106140615) do
     t.integer  "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["item_id"], name: "index_item_users_on_item_id"
-    t.index ["user_id"], name: "index_item_users_on_user_id"
+    t.index ["item_id"], name: "index_item_users_on_item_id", using: :btree
+    t.index ["user_id"], name: "index_item_users_on_user_id", using: :btree
   end
 
   create_table "items", force: :cascade do |t|
@@ -46,7 +49,7 @@ ActiveRecord::Schema.define(version: 20161106140615) do
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
     t.integer  "user_id"
-    t.index ["user_id"], name: "index_items_on_user_id"
+    t.index ["user_id"], name: "index_items_on_user_id", using: :btree
   end
 
   create_table "payments", force: :cascade do |t|
@@ -57,8 +60,8 @@ ActiveRecord::Schema.define(version: 20161106140615) do
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
     t.integer  "item_id"
-    t.index ["item_id"], name: "index_payments_on_item_id"
-    t.index ["user_id"], name: "index_payments_on_user_id"
+    t.index ["item_id"], name: "index_payments_on_item_id", using: :btree
+    t.index ["user_id"], name: "index_payments_on_user_id", using: :btree
   end
 
   create_table "users", force: :cascade do |t|
@@ -79,8 +82,12 @@ ActiveRecord::Schema.define(version: 20161106140615) do
     t.string   "name"
     t.string   "image"
     t.string   "link"
-    t.index ["email"], name: "index_users_on_email", unique: true
-    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+    t.string   "confirmation_token"
+    t.datetime "confirmed_at"
+    t.datetime "confirmation_sent_at"
+    t.string   "unconfirmed_email"
+    t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
+    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   end
 
 end

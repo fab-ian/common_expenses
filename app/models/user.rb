@@ -6,7 +6,7 @@ class User < ApplicationRecord
 
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
-  devise :database_authenticatable, :registerable,
+  devise :database_authenticatable, :registerable, :confirmable,
          :recoverable, :rememberable, :trackable, :validatable,
          :omniauthable, omniauth_providers: [:facebook]
 
@@ -29,6 +29,9 @@ class User < ApplicationRecord
       user.name = auth.info.name
       user.link = auth.info.urls.Facebook
       user.image = auth.info.image
+      user.confirmed_at = DateTime.now
+      user.confirmation_sent_at = DateTime.now
+      user.confirmation_token = "own-token-#{SecureRandom.hex(10)}"
     end
   end
 
