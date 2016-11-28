@@ -42,4 +42,8 @@ class User < ApplicationRecord
   def self.select_field_expense(expense_id)
     available_users_expense(expense_id).map { |u| [u.name, u.id] }
   end
+
+  def send_devise_notification(notification, *args)
+    devise_mailer.send(notification, self, *args).deliver_later
+  end
 end
