@@ -18,6 +18,5 @@ Rails.application.routes.draw do
     mount Sidekiq::Web => '/sidekiq'
   end
 
-  get 'home/index'
   root 'items#index'
 end
