@@ -3,7 +3,7 @@
 %p= item.description
 %p= link_to 'Edit', edit_item_path(item), class: 'btn btn-success'
 
-= render 'item_users/select_box', user_rec: item_user
+= render 'item_users/autocomplete_box', user_rec: item_user
 
 %hr
 = render 'partials/user_records', users_rec: item_users, user_controller: 'item_users', expense_id: ''

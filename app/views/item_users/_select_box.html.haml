@@ -1,5 +1,0 @@
-%h1 Add Users to Item
-= simple_form_for user_rec, remote: true do |f|
-  = f.input :item_id, as: :hidden, input_html: { value: item.id }
-  = f.select :user_id, User.select_field_item(item.id)
-  = f.button :submit

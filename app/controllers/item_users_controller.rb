@@ -12,6 +12,6 @@ class ItemUsersController < ApplicationController
   private
 
   def item_user_params
-    params.require(:item_user).permit(:item_id, :user_id)
+    params.permit(:item_id, :user_id)
   end
 end
