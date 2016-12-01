@@ -35,10 +35,6 @@ class User < ApplicationRecord
     end
   end
 
-  def self.select_field_item(item_id)
-    available_users_item(item_id).map { |u| [u.name, u.id] }
-  end
-
   def self.select_field_expense(expense_id)
     available_users_expense(expense_id).map { |u| [u.name, u.id] }
   end

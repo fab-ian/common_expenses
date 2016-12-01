@@ -1,4 +1,4 @@
 $("#participants_").append("#{ j render 'partials/user_record', u: item_user, user_controller: 'item_users' }");
 
-var select_value = $("#item_user_user_id").val();
-$("#item_user_user_id option[value='"+ select_value + "']").remove();
+$("#users_autocomplete").val("");
+$("#user_id").removeAttr("value")

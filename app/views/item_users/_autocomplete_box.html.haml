@@ -1,0 +1,12 @@
+%h1 Add Users to Item
+
+= form_tag({controller: "item_users", action: "create"}, method: "post", remote: true) do
+  = hidden_field_tag(:item_id, item.id)
+  = hidden_field_tag(:user_id)
+  .form-group
+    = label_tag(:users_autocomplete, "Find user:", class: 'sr-only"')
+    = text_field_tag(:users_autocomplete, nil, class: 'form-control') 
+  = submit_tag("Add", class: 'btn btn-default')
+
+:javascript
+  set_item_user_autocomplete('#users_autocomplete', '#user_id', #{params[:id]})

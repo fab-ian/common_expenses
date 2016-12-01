@@ -18,5 +18,9 @@ Rails.application.routes.draw do
     mount Sidekiq::Web => '/sidekiq'
   end
 
+  namespace :api do
+    get 'users/:id/available_users_item' => 'users#available_users_item'
+  end
+
   root 'items#index'
 end
