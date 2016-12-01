@@ -4,7 +4,11 @@ module Api
       render(
         json: User.
           available_users_item(params[:id]).
-          each { |rec| rec.image = '/assets/no_picture.png' if rec.image.nil? }
+          each do |rec|
+            if rec.image.nil?
+              rec.image = ActionController::Base.helpers.asset_path('no_picture.png')
+            end
+          end
       )
     end
   end
