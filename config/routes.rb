@@ -19,9 +19,6 @@ Rails.application.routes.draw do
   end
 
   namespace :api do
-    # resources :users, only: :available_users_item do
-    #   get 'available_users_item', on: :member
-    # end
     get 'users/:id/available_users_item' => 'users#available_users_item'
   end
 
