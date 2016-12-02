@@ -1,0 +1,2 @@
+$("#payment_#{payment.expense.id}").empty()
+$("#payment_#{payment.expense.id}").append("#{j render 'payments/form', e: @e, payment_obj: payment}")

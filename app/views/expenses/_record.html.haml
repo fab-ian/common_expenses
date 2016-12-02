@@ -6,7 +6,9 @@
       = link_to '(remove)', expense_path(e.id), method: :delete, remote: true
     %div{id: "expense_edit_#{e.id}"}
 
-  .col-md-6
+  .col-md-3
     = render 'expense_users/select_box', expense_id: e.id
     = render 'partials/user_records', users_rec: ExpenseUser.get_participants(e.id), user_controller: 'expense_users', expense_id: e.id
+  .col-md-3{id: "payment_#{e.id}"}
+    = render 'payments/form', e: e, payment_obj: Payment.find_by(expense_id: e.id) || Payment.new
 %hr

@@ -1,14 +1,11 @@
-%h3 Payments
-= simple_form_for Payment.new, remote: true do |f|
-  = f.input :item_id, as: :hidden, input_html: {value: item_id}
-  = f.input :name
-  = f.input :description, as: :text
-  = f.input :amount
-  = f.association :user, collection: User.used_users_item(item_id), prompt: "Choose an User"
+%p The happy payer 
+%strong= "(#{payment_obj.user.try(:name) || 'not selected'})"
+
+= simple_form_for(payment_obj, remote: true) do |f|
+  = f.input :item_id, as: :hidden, input_html: {value: e.item_id}
+  = f.input :expense_id, as: :hidden, input_html: {value: e.id}
+  = f.input :amount, as: :hidden, input_html: {value: e.amount}
+  = f.association :user, collection: User.used_users_item(e.item_id), prompt: "Choose an User"
   = f.button :submit
 
-%div{id: 'payments'}
-  %table.table
-    - payments.each do |p|
-      = render 'payments/record', p: p
 %div{id: 'payments_errors'}
