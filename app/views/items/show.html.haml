@@ -15,5 +15,3 @@
 %div{id: 'expenses'}
   - expenses.each do |e|
     = render 'expenses/record', e: e
-
-= render 'payments/form', item_id: item.id

@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   resources :item_users, only: [:create, :destroy]
   resources :expenses, only: [:create, :update, :destroy]
   resources :expense_users, only: [:create, :destroy]
-  resources :payments, only: [:create, :destroy]
+  resources :payments, only: [:create, :update, :destroy]
 
   get(
     'calculators/calculate_amounts/:item_id' => 'calculators#calculate_amounts',
