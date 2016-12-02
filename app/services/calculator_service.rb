@@ -13,7 +13,7 @@ class CalculatorService
       INNER JOIN expense_users AS eu ON eu.user_id = u.id
       INNER JOIN expenses AS e ON e.id = eu.expense_id
 
-      WHERE i.id = #{item_id}
+      WHERE i.id = #{item_id} and e.item_id = #{item_id} 
       Group BY i.name, u.name
 
       UNION
@@ -24,7 +24,7 @@ class CalculatorService
       INNER JOIN users AS u ON u.id = iu.user_id
       INNER JOIN payments AS p ON p.user_id = u.id
 
-      WHERE i.id = #{item_id}
+      WHERE i.id = #{item_id} and p.item_id = #{item_id}
       ) AS ep
       GROUP BY ep.name
 
