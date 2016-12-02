@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161128175652) do
+ActiveRecord::Schema.define(version: 20161202192538) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -34,6 +34,18 @@ ActiveRecord::Schema.define(version: 20161128175652) do
     t.index ["item_id"], name: "index_expenses_on_item_id", using: :btree
   end
 
+  create_table "invitations", force: :cascade do |t|
+    t.integer  "inviting_person_id"
+    t.integer  "invited_person_id"
+    t.integer  "item_id"
+    t.boolean  "accepted",           default: false, null: false
+    t.datetime "created_at",                         null: false
+    t.datetime "updated_at",                         null: false
+    t.index ["invited_person_id"], name: "index_invitations_on_invited_person_id", using: :btree
+    t.index ["inviting_person_id"], name: "index_invitations_on_inviting_person_id", using: :btree
+    t.index ["item_id"], name: "index_invitations_on_item_id", using: :btree
+  end
+
   create_table "item_users", force: :cascade do |t|
     t.integer  "item_id"
     t.integer  "user_id"
@@ -54,12 +66,12 @@ ActiveRecord::Schema.define(version: 20161128175652) do
 
   create_table "payments", force: :cascade do |t|
     t.integer  "user_id"
-    t.string   "name"
-    t.text     "description"
     t.decimal  "amount"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.integer  "item_id"
+    t.integer  "expense_id"
+    t.index ["expense_id"], name: "index_payments_on_expense_id", using: :btree
     t.index ["item_id"], name: "index_payments_on_item_id", using: :btree
     t.index ["user_id"], name: "index_payments_on_user_id", using: :btree
   end
@@ -90,4 +102,6 @@ ActiveRecord::Schema.define(version: 20161128175652) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   end
 
+  add_foreign_key "invitations", "items"
+  add_foreign_key "payments", "expenses"
 end
