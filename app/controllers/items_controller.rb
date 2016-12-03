@@ -1,5 +1,6 @@
 class ItemsController < ApplicationController
-  expose :items, -> { Item.all }
+  expose :my_items, -> { Item.my_items(current_user) }
+  expose :items_which_i_participate, -> { Item.items_which_i_participate(current_user) }
   expose :item
   expose :item_user, -> { ItemUser.new }
   expose :item_users, -> { ItemUser.get_participants(params[:id]) }
