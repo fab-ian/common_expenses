@@ -5,4 +5,9 @@ class Item < ApplicationRecord
   belongs_to :user
 
   validates :name, presence: true
+
+  scope :my_items, ->(user_id) { where(user_id: user_id) }
+  scope :items_which_i_participate, (lambda do |user_id|
+    joins(:item_users).where('items.user_id <> ? and item_users.user_id = ?', user_id, user_id)
+  end)
 end
