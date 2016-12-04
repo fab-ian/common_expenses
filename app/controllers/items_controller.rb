@@ -1,4 +1,6 @@
 class ItemsController < ApplicationController
+  load_and_authorize_resource
+
   expose :my_items, -> { Item.my_items(current_user) }
   expose :items_which_i_participate, -> { Item.items_which_i_participate(current_user) }
   expose :item

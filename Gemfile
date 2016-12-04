@@ -13,6 +13,7 @@ gem 'pg'
 gem 'sidekiq'
 gem 'highline'
 gem 'rails-assets-EasyAutocomplete', source: 'https://rails-assets.org'
+gem 'cancancan'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.0.0', '>= 5.0.0.1'
