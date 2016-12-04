@@ -3,4 +3,5 @@
   %p
     = i.name
     = link_to 'Show', item_path(i)
-    = link_to 'Delete', item_path(i), method: :delete
+    - if can? :destroy, i
+      = link_to 'Delete', item_path(i), method: :delete
