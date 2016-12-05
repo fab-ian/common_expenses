@@ -4,4 +4,10 @@ class Expense < ApplicationRecord
   has_one :payment, dependent: :destroy
 
   validates :name, :amount, presence: true
+
+  after_update :update_payment_amount
+
+  def update_payment_amount
+    payment.update(amount: amount)
+  end
 end
