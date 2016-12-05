@@ -37,20 +37,12 @@
               %li= link_to 'Sign in', new_user_session_path
               %li= link_to 'Sign up', new_user_registration_path
 
-
     .container
       .row
         .col-lg-9
           = bootstrap_flash
           = yield
         .col-lg-3
-          .well.sidebar-nav
-            %h3 Settlement
-            %ul.nav.nav-list
-              -if defined?(item).present?
-                - unless item.id.nil?
-                  %li
-                    %div{id: 'calculated_amounts'}
-                    = link_to "Calculate", calculate_path(item.id), remote:true, class: 'btn btn-default'
+          = render 'layouts/sidebar'
       %footer
         %p &copy; Naibaf 2016

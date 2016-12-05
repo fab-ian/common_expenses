@@ -7,6 +7,10 @@ class Expense < ApplicationRecord
 
   after_update :update_payment_amount
 
+  scope :not_paid, (lambda do |item_id|
+    where(item_id: item_id).where.not(id: Payment.where(item_id: item_id).pluck(:expense_id))
+  end)
+
   def update_payment_amount
     payment.update(amount: amount)
   end

@@ -1,0 +1,15 @@
+.well.sidebar-nav
+  -if defined?(item).present?
+    - if expenses_not_paid.present?
+      %h3 Not paid!
+      %ul.nav.nav-list
+        %li
+        - expenses_not_paid.each do |enp|
+          %p= enp.name
+
+    %h3 Settlement
+    %ul.nav.nav-list
+      - unless item.id.nil?
+        %li
+          %div{id: 'calculated_amounts'}
+          = link_to "Calculate", calculate_path(item.id), remote:true, class: 'btn btn-default'
