@@ -9,6 +9,7 @@ class ItemsController < ApplicationController
   expose :expense
   expose :expenses, -> { Expense.where(item_id: params[:id]) }
   expose :payments, -> { Payment.includes(:user).where(item_id: params[:id]) }
+  expose :expenses_not_paid, -> { Expense.not_paid(params[:id]) }
 
   def create
     if item.save
