@@ -12,7 +12,8 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require twitter/bootstrap
+//= require bootstrap-sprockets
 //= require EasyAutocomplete
+//= require adminlte/app.min.js
 //= require turbolinks
 //= require_tree .
