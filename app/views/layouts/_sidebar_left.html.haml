@@ -1,0 +1,44 @@
+.main-sidebar
+  / Inner sidebar
+  .sidebar
+    / user panel (Optional)
+    - if user_signed_in?
+      .user-panel
+        .pull-left.image
+          = image_tag(current_user.decorate.image, class: 'img-circle', alt: 'User Image')
+        .pull-left.info
+          %p User Name
+          %a{:href => "#"}
+            %i.fa.fa-circle.text-success
+            Online
+      / /.user-panel
+    / Search Form (Optional)
+    %form.sidebar-form{:action => "#", :method => "get"}
+      .input-group
+        %input.form-control{:name => "q", :placeholder => "Search...", :type => "text"}/
+        %span.input-group-btn
+          %button#search-btn.btn.btn-flat{:name => "search", :type => "submit"}
+            %i.fa.fa-search
+    / /.sidebar-form
+    / Sidebar Menu
+    %ul.sidebar-menu
+      %li.header HEADER
+      / Optionally, you can add icons to the links
+      %li.active
+        %a{:href => "#"}
+          %span Link
+      %li
+        %a{:href => "#"}
+          %span Another Link
+      %li.treeview
+        %a{:href => "#"}
+          %span Multilevel
+          %i.fa.fa-angle-left.pull-right
+        %ul.treeview-menu
+          %li
+            %a{:href => "#"} Link in level 2
+          %li
+            %a{:href => "#"} Link in level 2
+    / /.sidebar-menu
+  / /.sidebar
+/ /.main-sidebar

@@ -11,20 +11,13 @@
  * It is generally better to create a new file per style scope.
  *
  *= require EasyAutocomplete
- *= require_tree .
- *= require_self
+ *= require adminlte/AdminLTE.min
+ * require adminlte/skins/_all-skins.min
+ *= require adminlte/skins/skin-green-light.min
  */
-
-
-.round-image-50 {
-  background-color: white;
-  border: 1px solid #d9d9d9;
-  border-radius: 25px;
-  -moz-border-radius: 25px;
-  -webkit-border-radius: 25px;
-  height: 40px;
-  width: 40px;
-  overflow: hidden;
-  text-align: center;
-  img { width: 100% }
-}
+@import "bootstrap-sprockets";
+@import "bootstrap";
+@import "font-awesome";
+@import "adminlte/AdminLTE.min";
+@import "adminlte/skins/skin-green-light.min";
+@import "EasyAutocomplete";
