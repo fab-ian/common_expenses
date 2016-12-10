@@ -11,6 +11,7 @@ gem 'hamlit'
 gem 'bootstrap-sass', '~> 3.3.6'
 gem 'draper', '~> 3.0.0.pre1'
 gem 'font-awesome-rails'
+gem 'icheck-rails'
 
 gem 'highline'
 gem 'omniauth-facebook'
