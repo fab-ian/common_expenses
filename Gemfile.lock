@@ -128,6 +128,10 @@ GEM
     hashie (3.4.6)
     highline (1.7.8)
     i18n (0.7.0)
+    icheck-rails (1.0.2.2)
+      jquery-rails
+      rails (>= 3.1.0)
+      sass-rails
     jbuilder (2.6.0)
       activesupport (>= 3.0.0, < 5.1)
       multi_json (~> 1.2)
@@ -306,6 +310,7 @@ DEPENDENCIES
   font-awesome-rails
   hamlit
   highline
+  icheck-rails
   jbuilder (~> 2.5)
   jquery-rails
   listen (~> 3.0.5)
