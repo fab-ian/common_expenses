@@ -15,9 +15,10 @@
  * require adminlte/skins/_all-skins.min
  *= require adminlte/skins/skin-green-light.min
  */
-@import "bootstrap-sprockets";
-@import "bootstrap";
-@import "font-awesome";
-@import "adminlte/AdminLTE.min";
-@import "adminlte/skins/skin-green-light.min";
-@import "EasyAutocomplete";
+@import 'bootstrap-sprockets';
+@import 'bootstrap';
+@import 'font-awesome';
+@import 'adminlte/AdminLTE.min';
+@import 'adminlte/skins/skin-green-light.min';
+@import 'EasyAutocomplete';
+@import 'icheck/square/blue.css';
