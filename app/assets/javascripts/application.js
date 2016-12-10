@@ -15,5 +15,6 @@
 //= require bootstrap-sprockets
 //= require EasyAutocomplete
 //= require adminlte/app.min.js
+//= require icheck/icheck.min
 //= require turbolinks
 //= require_tree .
