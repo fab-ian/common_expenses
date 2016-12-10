@@ -10,15 +10,12 @@
  * files in this directory. Styles in this file should be added after the last require_* statement.
  * It is generally better to create a new file per style scope.
  *
- *= require EasyAutocomplete
- *= require adminlte/AdminLTE.min
- * require adminlte/skins/_all-skins.min
- *= require adminlte/skins/skin-green-light.min
  */
+ 
 @import 'bootstrap-sprockets';
 @import 'bootstrap';
 @import 'font-awesome';
 @import 'adminlte/AdminLTE.min';
-@import 'adminlte/skins/skin-green-light.min';
+@import 'adminlte/skins/skin-blue-light.min';
 @import 'EasyAutocomplete';
 @import 'icheck/square/blue';
