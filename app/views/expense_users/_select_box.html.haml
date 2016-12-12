@@ -1,6 +1,7 @@
 %div{id: "select_box_#{expense_id}"}
   %p Add Users to Expense
   = simple_form_for ExpenseUser.new, remote: true do |f|
+
     = f.input :expense_id, as: :hidden, input_html: { value: expense_id }
-    = f.select :user_id, User.select_field_expense(expense_id)
+    = f.input :user_id, collection: User.select_field_expense(expense_id), prompt: 'Choose an User'
     = f.button :submit
