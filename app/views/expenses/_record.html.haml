@@ -1,14 +1,20 @@
-.row{id: "expense_#{e.id}"}
-  .col-md-6
-    %p 
-      %strong #{e.name} - #{e.amount} 
-      = link_to '(edit)', edit_item_expense_path(e.item_id, e.id), remote: true
-      = link_to '(remove)', expense_path(e.id), method: :delete, remote: true
-    %div{id: "expense_edit_#{e.id}"}
+.box.box-default{id: "expense_#{e.id}"}
+  .box-header.with-border
+    %h3.box-title #{e.name} - #{e.amount}
+    = link_to '(edit)', edit_item_expense_path(e.item_id, e.id), remote: true
+    = link_to '(remove)', expense_path(e.id), method: :delete, remote: true
 
-  .col-md-3
-    = render 'expense_users/select_box', expense_id: e.id
-    = render 'partials/user_records', users_rec: ExpenseUser.get_participants(e.id), user_controller: 'expense_users', expense_id: e.id
-  .col-md-3{id: "payment_#{e.id}"}
-    = render 'payments/form', e: e, payment_obj: Payment.find_by(expense_id: e.id) || Payment.new
-%hr
+    .box-tools.pull-right
+      %button.btn.btn-box-tool{"data-toggle" => "tooltip", "data-widget" => "collapse", :title => "Collapse"}
+        %i.fa.fa-minus
+
+  .box-body
+    .row
+      .col-md-6
+        %div{id: "expense_edit_#{e.id}"}
+
+      .col-md-3
+        = render 'expense_users/select_box', expense_id: e.id
+        = render 'partials/user_records', users_rec: ExpenseUser.get_participants(e.id), user_controller: 'expense_users', expense_id: e.id
+      .col-md-3{id: "payment_#{e.id}"}
+        = render 'payments/form', e: e, payment_obj: Payment.find_by(expense_id: e.id) || Payment.new
