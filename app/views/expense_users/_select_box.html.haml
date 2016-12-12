@@ -3,5 +3,5 @@
   = simple_form_for ExpenseUser.new, remote: true do |f|
 
     = f.input :expense_id, as: :hidden, input_html: { value: expense_id }
-    = f.input :user_id, collection: User.select_field_expense(expense_id), prompt: 'Choose an User',  required: true
+    = f.input :user_id, collection: User.select_field_expense(expense_id), prompt: 'Choose an User'
     = f.button :submit
