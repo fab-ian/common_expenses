@@ -31,3 +31,4 @@
 /config/deploy/staging.rb
 
 /config/secrets.yml
+/config/skylight.yml
