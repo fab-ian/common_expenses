@@ -18,6 +18,7 @@ gem 'omniauth-facebook'
 gem 'rails-assets-EasyAutocomplete', source: 'https://rails-assets.org'
 gem 'sidekiq'
 gem 'simple_form'
+gem 'skylight'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.0.1'
