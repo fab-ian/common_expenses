@@ -1,6 +1,7 @@
 %h1 Item
 %p= item.name
-%p= item.description
+%p= simple_format(item.description)
+
 - if can? :edit, item
   %p= link_to 'Edit', edit_item_path(item), class: 'btn btn-success'
 
