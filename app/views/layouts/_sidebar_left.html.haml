@@ -7,7 +7,7 @@
         .pull-left.image
           = image_tag(current_user.decorate.image, class: 'img-circle', alt: 'User Image')
         .pull-left.info
-          %p User Name
+          %p #{current_user.name}
           %a{:href => "#"}
             %i.fa.fa-circle.text-success
             Online
