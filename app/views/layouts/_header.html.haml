@@ -81,7 +81,7 @@
             %li.dropdown.user.user-menu
               %a.dropdown-toggle{"data-toggle" => "dropdown", :href => "#"}
                 = image_tag(current_user.decorate.image, class: 'user-image', alt: 'User Image')
-                %span.hidden-xs Alexander Pierce
+                %span.hidden-xs= current_user.name
               %ul.dropdown-menu
                 / User image
                 %li.user-header
